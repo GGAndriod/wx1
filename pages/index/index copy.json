@@ -1,0 +1,13 @@
+{
+  "usingComponents": {
+    "v-indexMenuItem": "/component/indexMenuItem/indexMenuItem",
+    "v-goodGridItemTwo": "/component/goodGridItemTwo/goodGridItemTwo",
+    "v-newPeopleVoucherPop": "/component/newPeopleVoucherPop/newPeopleVoucherPop",
+    "v-scanPop": "/component/scanPop/scanPop",
+    "nav-bar": "/component/nav/nav",
+    "loginPop": "../../component/loginPop/loginPop"
+
+  },
+  "navigationBarTitleText": "开心盒子",
+  "enablePullDownRefresh": true
+}

@@ -1,0 +1,81 @@
+<!--index.wxml-->
+
+<view class="banner-con">
+  <!--搜索框-->
+  <view class="search-con">
+    <view class="search-row" style="background-color:{{searchBackgroundColor}}">
+      <view class="search-edit" bindtap="gotoSearch">
+        <image class="search-image" src="/images/icon-search.png"></image>
+        <text>搜索您想要的商品</text> 
+        </view>
+      <image class="scan-image" src="/images/index-scan.png" bindtap="onScanClick"></image>
+    </view>
+  </view>
+  <!--轮播图-->
+  <swiper class='swiper-con' circular="{{true}}" indicator-dots='{{false}}' autoplay='true' interval='5000'>
+    <block wx:for='{{adList}}' wx:key="" wx:for-item="item">
+      <swiper-item>
+        <image class='banner-image' src='{{imageUrl}}{{item.picture_url}}' id="Ad{{index}}" catchtap="onBannerImageClick" data-index="{{index}}" />
+      </swiper-item>
+    </block>
+  </swiper>
+</view>
+<!--菜单-->
+<v-indexMenuItem firstKindList="{{firstKindList}}" imageUrl="imageUrl"></v-indexMenuItem>
+<block wx:if='{{activityAdList}}'>
+  <text class="activity-hot-sale-text">活动精选</text>
+  <!--活动-->
+  <view class="activity-con">
+    <view class="special-offer-con" bindtap="gotoDiscountGoods">
+      <image src="{{imageUrl}}{{activityAdList.hot_url}}"></image>
+    </view>
+
+    <view class="rigth-con">
+      <!--抢购-->
+      <view class="buying-spree-con" bindtap="gotoTimeLimitPurchase">
+        <image src="{{imageUrl}}{{activityAdList.flash_url}}"></image>
+      </view>
+
+      <!--团购-->
+      <view class="group-buy-con" bindtap="gotoGroupBuy">
+        <image src="{{imageUrl}}{{activityAdList.group_url}}"></image>
+      </view>
+    </view>
+  </view>
+</block>
+<cover-image catchtouchmove="buttonMove" bindtouchstart="buttonStart" bindtouchend="buttonEnd" bindtap="gotoCabinetAddr" style="top:{{buttonTop}}px;left:{{buttonLeft}}px;width: 80px;height:80px;position:fixed;" src="/images/boxx.png"></cover-image>
+<block wx:if="{{todayHotSaleList&&todayHotSaleList.length>0}}">
+  <text class="hot-sale-text">每日热销</text>
+  <view class="today-hot-sale-con">
+    <v-goodGridItemTwo good-grid-list='good-grid-list' goodList="{{todayHotSaleList}}"></v-goodGridItemTwo>
+  </view>
+</block>
+
+<!--中部广告-->
+<block wx:if='{{middleAdList}}'>
+  <view class='middle-ad-con'>
+    <video id="kdvideo" enable-progress-gesture='{{false}}' catchtap="changePlayStatus" hidden="{{animationShow}}" objectFit="fill" class='middle-ad-video' src='{{imageUrl}}{{middleAdList[0].video_url}}' controls="{{false}}" loop="true"></video>
+    <image class="play-btn" catchtap="changePlayStatus" wx:if="{{!playState && !animationShow}}" src="/images/ico-video-start.png"></image>
+  </view>
+</block>
+
+
+<block wx:if="{{hotSingleList&&hotSingleList.length>0}}">
+  <text class="hot-sale-text">爆款单品</text>
+  <view class="today-hot-sale-con">
+    <v-goodGridItemTwo good-grid-list='good-grid-list' goodList="{{hotSingleList}}"></v-goodGridItemTwo>
+  </view>
+</block>
+
+<block wx:if="{{guessYouLikeList&&guessYouLikeList.length>0}}">
+  <text class="hot-sale-text">猜你喜欢</text>
+  <view class="today-hot-sale-con">
+    <v-goodGridItemTwo good-grid-list='good-grid-list' goodList="{{guessYouLikeList}}"></v-goodGridItemTwo>
+  </view>
+</block>
+
+<v-newPeopleVoucherPop id='newPeopleVoucherPop' bind:close="closeNewPeopleVoucherPop"></v-newPeopleVoucherPop>
+<v-scanPop id='scanPop' bind:close="closeScanPop "></v-scanPop>
+
+<!-- 用户授权登录 -->
+<loginPop id="loginPop" bind:close="closeDineAndDashPop"></loginPop>

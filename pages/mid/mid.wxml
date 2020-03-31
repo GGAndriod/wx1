@@ -1,0 +1,32 @@
+<!--pages/mid.wxml-->
+<text>当前时间：{{time}}</text>
+<view class="container">
+  <!-- 定位 -->
+  <view>
+    <button bindtap="clickMe">点我获取定位</button>
+  </view>
+  <view class="usermotto">
+    <text wx:if="{{latitude}}">维度{{latitude}}</text>
+    <text wx:if="{{longitude}}">  经度{{longitude}}</text>
+  </view>
+
+  <!-- 扫一扫 -->
+  <view>
+    <button bindtap="saoyisao">打开扫一扫</button>
+    <text>{{scanDate}}</text>
+  </view>
+
+  <view class="userinfo">
+    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+    <block wx:else>
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </block>
+  </view>  
+  <view class="usermotto">
+    <text class="user-motto">{{motto}}</text>
+  </view>
+  <view>
+    <button bindtap="clickMe">点我啊</button>
+  </view>
+</view>

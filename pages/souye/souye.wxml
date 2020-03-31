@@ -1,0 +1,23 @@
+<!--pages/souye/souye.wxml-->
+<view class="banner-con">
+ <!--搜索框-->
+<!--轮播图-->
+  <swiper class='swiper-con' circular="{{true}}" indicator-dots='{{false}}' autoplay='true' interval='5000'>
+    <block wx:for='{{adList}}' wx:key="" wx:for-item="item">
+      <swiper-item>
+        <image class='banner-image' src='{{item.url}}' id="{{item.aId}}" catchtap="onBannerImageClick" data-index="{{index}}" />
+      </swiper-item>
+    </block>
+  </swiper>
+</view>
+<view class="container">
+  <view class="advices">
+    <button  bindtap="getAdvices"> 获取广告 </button>
+    <text >{{advices}}</text>
+
+      
+    
+  </view>  
+  
+  
+</view>

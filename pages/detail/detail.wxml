@@ -1,0 +1,6 @@
+<!--pages/detail/detail.wxml-->
+
+<view>
+<text>商品id:{{goods.id}}</text>
+<text>url:{{goods.url}}</text>
+</view>
