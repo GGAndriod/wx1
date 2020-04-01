@@ -1,7 +1,7 @@
 <!--pages/mine/mine.wxml-->
 <view class="container">
   <!-- <button bindtap="tapLogin">登录到后台</button> -->
-
+<button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">登录到后台</button>
   <!-- 直接获取微信信息 没有关联到后台 -->
   <view class="userinfo">
     <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 微信登录 </button>

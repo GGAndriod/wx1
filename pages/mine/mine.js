@@ -4,15 +4,14 @@ const app = getApp()
 Page({
 
   /**
-   * 页面的初始数据 canIUse: wx.canIUse('button.open-type.getUserInfo')
+   * 页面的初始数据 
    */
   data: {
     userInfo: {},
     hasUserInfo: false,
-    canIUse: false
+    canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
-  getUserInfo: function(e) {
-    // console.log(app.globalData.userInfo)
+  getUserInfo: function(e) {   
     // console.log(e)
     app.globalData.userInfo = e.detail.userInfo
     this.setData({
@@ -20,7 +19,14 @@ Page({
       hasUserInfo: true
     })
   },
-
+  //通过绑定手机号登录
+  getPhoneNumber: function (e) {
+    console.log(e)
+    var ivObj = e.detail.iv
+    var telObj = e.detail.encryptedData
+    var codeObj = "";
+    var that = this;
+  },
   //微信登录到后台
   tapLogin: function() {
 
